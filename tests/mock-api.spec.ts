@@ -1,8 +1,6 @@
 import test, { expect } from "@playwright/test";
 
-test('monitor-intercept-mock api demo', async ({ page }) => {
-
-    // Mock API
+test('mock api demo', async ({ page }) => {
     // await page.route('**/web/index.php/api/v2/dashboard/shortcuts',
     //     route => route.fulfill({
     //         status: 200,
@@ -19,6 +17,7 @@ test('monitor-intercept-mock api demo', async ({ page }) => {
     //             "rels": []
     //         }
     //     }));
+
 
     await page.route('**/web/index.php/api/v2/dashboard/shortcuts', async route => {
         const response = await route.fetch()
