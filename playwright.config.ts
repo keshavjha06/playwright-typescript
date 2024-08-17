@@ -29,13 +29,13 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
-    video: 'on',
+    video: process.env.CI ? 'retain-on-failure' : 'off',
     geolocation: { longitude: 12.492507, latitude: 41.890251 },
     timezoneId: 'Europe/Rome',
-    // launchOptions: {
-    //   args: ["--start-maximized"],
-    // },
-    // viewport: null
+   /*  launchOptions: {
+      args: ["--start-maximized"],
+    },
+    viewport: null */
   },
 
   /* Configure projects for major browsers */
@@ -46,10 +46,10 @@ export default defineConfig({
         // ...devices['Desktop Chrome']
         video: 'off',
         extraHTTPHeaders: { 'x-test': 'test' },
-        // viewport: null,
-        // launchOptions: {
-        //   args: ['--start-maximized']
-        // }
+        /* viewport: null,
+        launchOptions: {
+          args: ['--start-maximized']
+        } */
       },
     },
 
