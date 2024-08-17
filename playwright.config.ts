@@ -31,14 +31,26 @@ export default defineConfig({
     trace: 'on',
     video: 'on',
     geolocation: { longitude: 12.492507, latitude: 41.890251 },
-    timezoneId: 'Europe/Rome'
+    timezoneId: 'Europe/Rome',
+    // launchOptions: {
+    //   args: ["--start-maximized"],
+    // },
+    // viewport: null
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], video: 'off', extraHTTPHeaders: { 'x-test': 'test' } },
+      use: {
+        // ...devices['Desktop Chrome']
+        video: 'off',
+        extraHTTPHeaders: { 'x-test': 'test' },
+        // viewport: null,
+        // launchOptions: {
+        //   args: ['--start-maximized']
+        // }
+      },
     },
 
     /* {
