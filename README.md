@@ -41,6 +41,7 @@ npx playwright show-trace test-results/<test-folder>/trace.zip
 ├── playwright.config.ts        # Global config (Chromium project, HTML reporter, traces on)
 ├── tests/
 │   ├── api.spec.ts                     # REST API testing with the `request` fixture (GET/POST)
+│   ├── demo-todo-app.spec.ts           # Playwright's sample TodoMVC tests (24 tests)
 │   ├── example.spec.ts                 # Basic page navigation and assertions
 │   ├── locators.spec.ts                # Locator strategies (role, placeholder, text, label, alt text, title)
 │   ├── mock-api.spec.ts                # Mocking API responses with page.route / route.fulfill
@@ -51,15 +52,13 @@ npx playwright show-trace test-results/<test-folder>/trace.zip
 │   ├── visualtest.spec.ts              # Visual regression with toHaveScreenshot (+ masking, diff ratios)
 │   ├── visualtest.spec.ts-snapshots/   # Baseline screenshots (generated locally, gitignored)
 │   └── wait.spec.ts                    # Waiting strategies (waitForResponse, waitForSelector, waitForFunction)
-└── tests-examples/
-    └── demo-todo-app.spec.ts           # Playwright's sample TodoMVC tests (not run by default)
 ```
 
 ## Configuration highlights
 
 From `playwright.config.ts`:
 
-- **testDir:** `./tests`
+- **testDir:** `./tests` — Playwright only discovers specs inside this folder. A file path passed on the command line is a filter on discovered files, so specs outside `tests/` report "No tests found".
 - **Browser:** Chromium only (Firefox/WebKit/mobile projects are commented out)
 - **Reporter:** `html`
 - **Trace:** always on
