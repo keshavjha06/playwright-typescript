@@ -33,8 +33,8 @@ test('mock api demo', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Username' }).fill('Admin')
     await page.getByPlaceholder('Password').fill('admin123')
     await page.getByRole('button', { name: /login/i }).click()
-    await expect(page.getByTitle('My Timesheet').last()).not.toBeVisible()
-    await expect(page.getByTitle('Leave List').last()).toBeVisible()
-    await expect(page.getByTitle('My Timesheet').last()).toBeVisible()
+    // wait for the shortcuts widget to render before checking the mocked-out shortcut
+    await expect(page.getByTitle('Leave List').last()).toBeVisible({ timeout: 15_000 })
+    await expect(page.getByTitle('My Timesheet')).toHaveCount(0)
 
 })
