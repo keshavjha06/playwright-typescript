@@ -1,5 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-import { off } from 'process';
 
 /**
  * Read environment variables from file.
